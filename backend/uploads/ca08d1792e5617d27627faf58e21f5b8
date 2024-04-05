@@ -1,0 +1,70 @@
+# Rollback Queries
+
+## Recent Transacions : C003
+```sql
+    UPDATE `components` SET `info` = '{"headers":{"date":"Date","time":"Time","amount":"Amount","c_name":"By","status":"Status","txn_id":"Transaction_id"},"identifier":"status","enable_identifier":"true","identifier_relations":[{"key":"success","color":"success","value":"1"},{"key":"failure","color":"danger","value":"2"},{"key":"failed","color":"danger","value":"2"},{"key":"unknown","color":"danger","value":"11"},{"key":"pending","color":"warning","value":"3"},{"key":"refunded","color":"warning","value":"4"},{"key":"partially refunded","color":"warning","value":"5"},{"key":"initiated","color":"info","value":"6"},{"key":"chargeback","color":"danger","value":"7"}]}' WHERE `components`.`code` = 'C003';
+```
+
+## Transaction Table : C007
+```sql
+    UPDATE `components` SET `info` = '{"identifier_relations":[{"key":"success","color":"success","value":"1"},{"key":"failed","color":"danger","value":"2"},{"key":"pending","color":"warning","value":"3"},{"key":"refunded","color":"warning","value":"4"},{"key":"initiated","color":"info","value":"5"},{"key":"partially refunded","color":"warning","value":"6"},{"key":"chargeback","color":"warning","value":"7"}]}' WHERE `components`.`code` = 'C007';
+```
+
+## Payment Link List : C019
+```sql
+    UPDATE `components` SET `info` = '{"headers":[{"title":"Serial No","column":"id","auto_increment":true,"is_hidden":false},{"title":"Name","column":"customer_name","auto_increment":false,"is_hidden":false},{"title":"Email","column":"customer_email","auto_increment":false,"is_hidden":false},{"title":"Phone","column":"customer_phone","auto_increment":false,"is_hidden":false},{"title":"Expired Date","column":"expiry_date_time","auto_increment":false,"is_hidden":true},{"title":"Amount","column":"amount","auto_increment":false,"is_hidden":false},{"title":"Receipt Id","column":"receipt_id","auto_increment":false,"is_hidden":false},{"title":"Expiry Status","column":"link_status","auto_increment":false,"is_hidden":false},{"title":"Payment Status","column":"order_status","auto_increment":false,"is_hidden":false},{"title":"URL","column":"url","auto_increment":false,"is_hidden":true}],"identifier_relations":[{"column":"link_status","data":[{"key":"Active","color":"primary","value":1},{"color":"danger","key":"Expired","value":0},{"color":"danger","key":"Inactive","value":2}]},{"column":"order_status","data":[{"key":"success","color":"success","value":"success"},{"key":"failed","color":"danger","value":"failure"},{"key":"failed","color":"danger","value":"failed"},{"key":"pending","color":"warning","value":"pending"},{"key":"refunded","color":"warning","value":"refunded"},{"key":"initiated","color":"info","value":"initiated"},{"key":"partially refunded","color":"warning","value":"partially refunded"}]}],"action":"url","filters":[{"type":"options","label":"Payment Status","column":"order_status","values":[{"key":"success","value":"success"},{"key":"failed","value":"failure"},{"key":"failed","value":"failed"},{"key":"pending","value":"pending"},{"key":"refunded","value":"refunded"},{"key":"initiated","value":"initiated"},{"key":"partially refunded","value":"partially refunded"}]},{"type":"single_options","label":"Expiry Status","column":"expiry_status","values":[{"key":"Active","value":1},{"key":"Inactive","value":0}]},{"type":"text_select","label":"Search By","column":"text_with_search","options":[{"key":"customer_name","value":"Name"},{"key":"customer_email","value":"Email"},{"key":"customer_phone","value":"Phone"},{"key":"receipt_id","value":"Receipt Id"}]}]}' WHERE `components`.`code` = 'C019';
+```
+
+## Incident : C020
+```sql
+    UPDATE `components` SET `info` = '{"body":[{"title":"Payment Source","label":"Payment Source","type":"multi","action":"payment_source","options":[{"key":"Payment Gateway","value":"payment_gateway","is_selected":true},{"key":"Payment Links","value":"payment_link","is_selected":true}]},{"title":"Transaction Status","label":"Transaction Status","type":"multi","action":"transaction_status","options":[{"key":"Initiated","value":"initiated","is_selected":true},{"key":"Pending","value":"pending","is_selected":true},{"key":"Success","value":"success","is_selected":true},{"key":"Failure","value":"failure","is_selected":true},{"key":"Refunded","value":"refunded","is_selected":true}]},{"title":"Payment Mode","label":"Payment Mode","type":"multi","action":"payment_mode","options":[{"key":"Credit Card","value":"CC","is_selected":true},{"key":"Debit Card","value":"DC","is_selected":true},{"key":"UPI","value":"UPI","is_selected":true},{"key":"UPI QR","value":"DBQR","is_selected":true},{"key":"Net Banking","value":"NB","is_selected":true},{"key":"Wallet","value":"CASH","is_selected":true},{"key":"EMI","value":"EMI","is_selected":true}]},{"title":"Fields","label":"Fields","type":"multi","action":"fields","options":[{"key":"PG Id","value":"orders_production.pg_id","is_selected":true},{"key":"PG Method","value":"orders_production.method","is_selected":true},{"key":"Order id","value":"orders_production.random_id","is_selected":true},{"key":"Amount","value":"orders_production.amount","is_selected":true},{"key":"Transaction Id","value":"orders_production.receipt_id","is_selected":true},{"key":"Customer Name","value":"orders_production.customer_name","is_selected":true},{"key":"Customer Phone","value":"orders_production.customer_phone","is_selected":true},{"key":"Customer Email","value":"orders_production.customer_email","is_selected":true},{"key":"Order Status","value":"orders_production.order_status","is_selected":true},{"key":"Additional Charges","value":"orders_production.additional_charges","is_selected":true},{"key":"MDR","value":"orders_production.mdr","is_selected":true},{"key":"Date","value":"orders_production.created_at","is_selected":true},{"key":"Failure Reason","value":"payments_production.pg_error","is_selected":true},{"key":"udf 1","value":"order_details_production.udf1","is_selected":true},{"key":"udf 2","value":"order_details_production.udf2","is_selected":true},{"key":"udf 3","value":"order_details_production.udf3","is_selected":true},{"key":"udf 4","value":"order_details_production.udf4","is_selected":true},{"key":"udf 5","value":"order_details_production.udf5","is_selected":true},{"key":"Billing Line1","value":"order_details_production.billing_address1","is_selected":true},{"key":"Billing Line2","value":"order_details_production.billing_address2","is_selected":true},{"key":"Billing City","value":"order_details_production.billing_city","is_selected":true},{"key":"Billing State","value":"order_details_production.billing_state","is_selected":true},{"key":"Billing Country","value":"order_details_production.billing_country","is_selected":true},{"key":"Billing Zip Code","value":"order_details_production.billing_zipcode","is_selected":true},{"key":"Shipping First Name","value":"order_details_production.shipping_firstname","is_selected":true},{"key":"Shipping Last Name","value":"order_details_production.shipping_lastname","is_selected":true},{"key":"Shipping Line1","value":"order_details_production.shipping_address1","is_selected":true},{"key":"Shipping Line2","value":"order_details_production.shipping_address2","is_selected":true},{"key":"Shipping City","value":"order_details_production.shipping_city","is_selected":true},{"key":"Shipping State","value":"order_details_production.shipping_state","is_selected":true},{"key":"Shipping Country","value":"order_details_production.shipping_country","is_selected":true},{"key":"Shipping Zip Code","value":"order_details_production.shipping_zipcode","is_selected":true},{"key":"UTR No","value":"settlement.mer_utr","is_selected":true},{"key":"Settled Amount","value":"settlement.mer_net_amount","is_selected":true},{"key":"Service Fee","value":"settlement.mer_service_fee","is_selected":true},{"key":"Service Tax","value":"settlement.mer_service_tax","is_selected":true}]}],"header":[{"title":"File Format","label":"File Format","type":"single","action":"format","options":[{"key":"CSV","value":"csv"},{"key":"Excel (.xlsx)","value":"excel"}]},{"title":"Frequency","label":"Frequency","type":"single","action":"frequency","options":[{"key":"Daily","value":"daily"},{"key":"Weekly","value":"weekly"},{"key":"Monthly","value":"monthly"}]}]}' WHERE `components`.`code` = 'C020';
+```
+
+## Transactions Report fields : C022
+```sql
+    UPDATE `components` SET `info` = '{"body":[{"title":"PG Id","label":"PG Id","type":"text","action":"pg_id"},{"title":"PG Method","label":"PG Method","type":"text","action":"pg_method"},{"title":"Order id","label":"Order Id","type":"text","action":"random_id"},{"title":"Amount","label":"Amount","type":"text","action":"amount"},{"title":"Transaction Id","label":"Transaction Id","type":"text","action":"receipt_id"},{"title":"Customer Name","label":"Customer Name","type":"text","action":"customer_name"},{"title":"Customer Phone","label":"Customer Phone","type":"text","action":"customer_phone"},{"title":"Customer Email","label":"Customer Email","type":"text","action":"customer_email"},{"title":"Order Status","label":"Order Status","type":"text","action":"order_status"},{"title":"Currency","label":"Currency","type":"text","action":"given_currency"}],"header":[{"title":"File Format","label":"File Format","type":"multi","action":"format","options":[{"key":"CSV","value":"csv"},{"key":"Excel","value":"excel"},{"key":"Text","value":"text"}]}],"search":[{"label":"Status","value":"status","data":[{"label":"Initiated","value":"initiated"},{"label":"Success","value":"success"},{"label":"Failure","value":"failure"},{"label":"Pending","value":"pending"},{"label":"Refunded","value":"refunded"}]},{"label":"Payment Mode","value":"pg_method","data":[{"label":"Credit Card","value":"CC"},{"label":"Debit Card","value":"DC"},{"label":"NetBanking","value":"NB"},{"label":"UPI","value":"UPI"}]}]}' WHERE `components`.`code` = 'C022';
+```
+
+## Total GTV : C010
+```sql
+    UPDATE `components` SET `title` = 'Total GTV' WHERE `code` = 'C010';
+```
+
+## Total Captured Transactions : C011
+```sql
+    UPDATE `components` SET `title` = 'Total Captured Transactions' WHERE `code` = 'C011';
+```
+
+## Average Transaction Value : C032
+```sql
+    DELETE FROM `components` WHERE `code` = 'C032';
+```
+
+## Success Rate : C033
+```sql
+    DELETE FROM `components` WHERE `code` = 'C033';
+```
+
+## Total Transactions Card Hide : C001
+```sql
+    UPDATE user_roles SET active = 1 WHERE role_id = 3 AND component_id IN ( SELECT id FROM components WHERE code = 'C001' );
+    UPDATE user_roles SET active = 1 WHERE role_id = 2 AND component_id IN ( SELECT id FROM components WHERE code = 'C001' );
+    UPDATE user_roles SET active = 1 WHERE role_id = 1 AND component_id IN ( SELECT id FROM components WHERE code = 'C001' );
+```
+
+## Total Refunds Card Hide : C012
+```sql
+    UPDATE user_roles SET active = 1 WHERE role_id = 3 AND component_id IN ( SELECT id FROM components WHERE code = 'C012' );
+    UPDATE user_roles SET active = 1 WHERE role_id = 2 AND component_id IN ( SELECT id FROM components WHERE code = 'C012' );
+    UPDATE user_roles SET active = 1 WHERE role_id = 1 AND component_id IN ( SELECT id FROM components WHERE code = 'C012' );
+```
+
+## Add Average Transaction Value Card : C032
+```sql
+    DELETE FROM user_roles WHERE component_id IN ( SELECT id FROM components WHERE code = 'C032' );
+```
+
+## Add Success Rate Card : C033
+```sql
+    DELETE FROM user_roles WHERE component_id IN ( SELECT id FROM components WHERE code = 'C033' );
+```

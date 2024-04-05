@@ -1,0 +1,79 @@
+DATABASE-mysql
+
+# create a user and the login host 
+CREATE USER 'sammy'@'localhost/ip-of-server' IDENTIFIED BY 'password';
+
+# grant particular permission
+GRANT (PRIVILEGE) ON [database].[table] TO 'username'@'host/ip';
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
+
+# grant full permission on all table and column
+GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
+
+# update the database persmission
+FLUSH PRIVILEGES;
+
+# remove a particular permissoin from user
+REVOKE type_of_permission ON database_name.table_name FROM 'username'@'host';
+
+# show permission of user
+SHOW GRANTS FOR 'username'@'host';
+
+# delete a user 
+DROP USER 'username'@'localhost';
+
+
+
+*********** database management **************************
+
+MY-SQL Commands
+
+# Console Screen Clear
+mysql> system clear;
+
+# Creating DataBase
+CREATE DATABASE [IF NOT EXISTS] database_name;
+
+# changing Database
+USE database_name;
+
+# drop/delete database
+DROP DATABASE [IF EXISTS] database_name;
+
+# show all database in current server 
+SHOW DATABASES;
+
+# get info about specified table 
+DESCRIBE animal;
+
+# show all tables in current database
+SHOW TABLES;
+
+# create a new table 
+CREATE TABLE [IF NOT EXISTS] table_name(
+  column_list
+);
+
+# change table name 
+ALTER TABLE animal RENAME pet;
+
+# create a new column
+ALTER TABLE table 
+ADD [COLUMN] column_name;
+
+# drop a column
+ALTER TABLE table_name
+DROP [COLUMN] column_name;
+
+# drop a table 
+DROP TABLE [IF EXISTS] table_name;
+
+# show columns of table 
+DESCRIBE table_name;
+
+# show info of column in a table 
+DESCRIBE table_name column_name;
+
+# delete a all row in a table 
+DELETE FROM table_name;
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Alphabet Counter</title>
+    <style>
+        /* CSS styles */
+        body {
+            background-color: #ffcc00; /* Vibrant yellow background */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Comic Sans for ultimate fun */
+            text-align: center; /* Center-align content */
+            padding: 20px; /* Add some padding */
+        }
+
+        h1 {
+            color: #ff3366; /* Pinkish color for heading */
+            font-size: 2.5em; /* Larger font size */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for extra style */
+        }
+
+        input[type="file"] {
+            padding: 10px; /* Add padding */
+            margin: 20px auto; /* Center horizontally with some space */
+            display: block; /* Display as block element */
+            border: 2px dashed #3399ff; /* Blue dashed border */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        button[type="submit"] {
+            background-color: #ff6699; /* Light pink background */
+            color: white; /* White text color */
+            border: none; /* No border */
+            padding: 10px 20px; /* Padding */
+            font-size: 1.2em; /* Larger font size */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff3366; /* Darker pink on hover */
+        }
+
+        footer {
+            position: fixed; /* Fixed to bottom */
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #663399; /* Purple background for footer */
+            color: white; /* White text color */
+            padding: 10px 0; /* Padding */
+            text-align: center; /* Center-align text */
+        }
+    </style>
+</head>
+<body>
+    <h1>Fun Alphabet Counter</h1>
+    <form action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt">
+        <button type="submit">Upload & Have Fun!</button>
+    </form>
+
+    <footer>
+        <p>&copy; 2024 Data Count in txt file. All rights reserved. Contact us at funuploader@example.com</p>
+    </footer>
+</body>
+</html>
